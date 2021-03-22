@@ -1,11 +1,11 @@
 import './App.css';
-import GoogleMap from './components/GoogleMap';
+import Map from './components/Map';
 
 function App() {
   return (
     <div className="App">
       <h1>Google Map Integration</h1>
-      <GoogleMap/>
+      <Map/>
     </div>
   );
 }

@@ -1,9 +1,14 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React, {useState} from 'react';
+import { GoogleMap, useJsApiLoader, withGoogleMap, InfoWindow, Marker } from 'ç';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
+
 
 const containerStyle = {
-  width: '800px',
-  height: '800px'
+  width: '1200px',
+  height: '600px'
 };
 
 const center = {
@@ -11,14 +16,14 @@ const center = {
   lng: -38.523
 };
 
-function MyComponent() {
-   const API_KEY = process.env.REACT_APP_API_KEY
+function Map() {
+  
+
+  const API_KEY = process.env.REACT_APP_API_KEY
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: API_KEY
   })
-
-
 
   const [map, setMap] = React.useState(null)
 
@@ -33,6 +38,7 @@ function MyComponent() {
   }, [])
 
   return isLoaded ? (
+    <div>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -43,7 +49,9 @@ function MyComponent() {
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
       </GoogleMap>
+     
+    </div>
   ) : <></>
 }
 
-export default React.memo(MyComponent)
+export default React.memo(Map)
